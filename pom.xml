@@ -40,6 +40,13 @@
             <artifactId>testng</artifactId>
             <version>7.7.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.codeborne/selenide-appium -->
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide-appium</artifactId>
+            <version>7.0.4</version>
+        </dependency>
+
 
     </dependencies>
 </project>
