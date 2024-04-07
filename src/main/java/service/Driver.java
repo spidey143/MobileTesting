@@ -9,8 +9,11 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 
 import javax.annotation.Nonnull;
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 
 public class Driver implements WebDriverProvider {
     private static final TestConfig CONFIG = ConfigFactory.create(TestConfig.class);
@@ -23,15 +26,18 @@ public class Driver implements WebDriverProvider {
                 .setAppActivity(CONFIG.getActivity())
                 .setPlatformName(CONFIG.getPlatformName())
                 .setDeviceName(CONFIG.getDeviceName())
-                .setAutomationName(CONFIG.getAutomationName());
+                .setAutomationName(CONFIG.getAutomationName())
+                .setNoReset(CONFIG.getNoReset());
         try {
-            return new AndroidDriver(new URL(CONFIG.getUrl()), options);
-        } catch (MalformedURLException e) {
+            AndroidDriver driver = new AndroidDriver(new URL(CONFIG.getUrl()), options);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+            return driver;
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void closeDriver(){
+    public static void closeApp() {
         SelenideAppium.terminateApp(CONFIG.getPackage());
     }
 }

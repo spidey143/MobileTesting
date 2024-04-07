@@ -14,6 +14,9 @@ public interface TestConfig extends Config {
     @Config.Key("url")
     String getUrl();
 
+    @Config.Key("app")
+    String getApp();
+
     @Config.Key("package")
     String getPackage();
 
@@ -25,5 +28,4 @@ public interface TestConfig extends Config {
 
     @Config.Key("noReset")
     Boolean getNoReset();
-
 }

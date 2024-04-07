@@ -1,2 +1,3 @@
-package steps;public interface Steps {
+package steps;
+public interface Steps {
 }
