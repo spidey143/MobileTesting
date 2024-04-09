@@ -2,17 +2,13 @@ package screens.requests;
 
 import com.codeborne.selenide.SelenideElement;
 import elements.Button;
+import elements.pickers.DatePicker;
+import elements.pickers.TimePicker;
 import io.appium.java_client.AppiumBy;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class CreateRequestScreen {
-    public Button cancelButton = new Button(
-            AppiumBy.xpath("//android.widget.TextView[@text=\"Отменить\"]/.."),
-            "Кнопка 'Отменить'");
-    public Button createRequestButton = new Button(
-            AppiumBy.xpath("//android.widget.TextView[@text=\"Создать заявку\"]/.."),
-            "Кнопка 'Создать заявку'");
     public SelenideElement service;
     public SelenideElement customer;
     public SelenideElement airline;
@@ -21,9 +17,23 @@ public class CreateRequestScreen {
     public SelenideElement numberVs;
     public SelenideElement flightNumber;
     public SelenideElement typeVs;
-    public SelenideElement startPlan;
-    public SelenideElement endPlan;
+    public DatePicker startPlanDp;
+    public TimePicker starPlanTp;
+    public DatePicker endPlanDp;
+    public TimePicker endPlanTp;
     public SelenideElement planTotalDuration;
-    public SelenideElement executor;
-    public SelenideElement garageNumberSpecialEquipment;
+    public SelenideElement closeCheckBox;
+    public SelenideElement platform;
+    public SelenideElement parkingPlace;
+    public SelenideElement count;
+    public SelenideElement comment;
+    public Button addDocumentButton = new Button(
+            AppiumBy.xpath(""),
+            "Кнопка добавления документа");
+    public Button cancelButton = new Button(
+            AppiumBy.xpath("//android.widget.TextView[@text=\"Отменить\"]/.."),
+            "Кнопка 'Отменить'");
+    public Button createRequestButton = new Button(
+            AppiumBy.xpath("//android.widget.TextView[@text=\"Создать заявку\"]/.."),
+            "Кнопка 'Создать заявку'");
 }

@@ -1,4 +1,4 @@
-package screens;
+package screens.baggageDelivery;
 
 public class BaggageDeliveryScreen {
 }

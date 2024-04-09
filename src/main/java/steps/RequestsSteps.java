@@ -10,8 +10,23 @@ public class RequestsSteps implements BaseScreen {
 
     }
 
-    @Step("Удалить заявку")
+    @Step("Отменить заявку")
     public void deleteRequest(){
+
+    }
+
+    @Step("Добавить комментарий к заявке")
+    public void addCommentToRequest(){
+
+    }
+
+    @Step("Редактировать заказ на доставку багажа")
+    public void editRequest(){
+
+    }
+
+    @Step("Скопировать заявку")
+    public void copyRequest(){
 
     }
 }
