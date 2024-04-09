@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 
 public class TextField extends BaseElement{
     public TextField(By by, String name) {
-        super(by, name);
+        super(by, "Текстовое поле: {'" + name + "'}");
     }
 
     public void setValue(String value){

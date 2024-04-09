@@ -3,24 +3,23 @@ package service;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.appium.SelenideAppium;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.qameta.allure.Step;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.Assert;
+import org.testng.annotations.*;
 import screens.BaseScreen;
 
 import static com.codeborne.selenide.appium.AppiumClickOptions.tap;
 
 public class BaseTest implements BaseScreen {
 
-    private final AppiumServiceBuilder APPIUM_SERVICE_BUILDER = new AppiumServiceBuilder()
-            .usingPort(4723).withArgument(() -> "--allow-insecure","chromedriver_autodownload");
+    private final AppiumDriverLocalService APPIUM_SERVICE = new AppiumServiceBuilder()
+            .usingPort(4723).withArgument(() -> "--allow-insecure","chromedriver_autodownload").build();
 
-    @BeforeClass(description = "Инициализация")
+    @BeforeSuite(description = "Инициализация")
     public void init() {
-        APPIUM_SERVICE_BUILDER.build().start(); // запуск appium
+        APPIUM_SERVICE.start(); // запуск appium
         Configuration.browser = Driver.class.getName();
     }
 
@@ -40,9 +39,9 @@ public class BaseTest implements BaseScreen {
 
     @Step("Выход из акканунта")
     public void logout(){
-        menu.openMenuButton.buttonTap();
         menu.openPersonalCabinet();
-        personalCabinetScreen.getExitButton().click(tap());
+        personalCabinetScreen.exitButton.buttonTap();
+        Assert.assertTrue(mainScreen.loginButton.isVisibility(), "Выход из акканунта не произошел!");
     }
 
     @BeforeMethod(description = "Октрытие приложения")
@@ -54,8 +53,8 @@ public class BaseTest implements BaseScreen {
         WebDriverRunner.driver().close();
     }
 
-    @AfterClass(description = "Остановка appium")
+    @AfterSuite(description = "Остановка appium")
     public void closeAppium() {
-        APPIUM_SERVICE_BUILDER.build().stop();
+        APPIUM_SERVICE.stop();
     }
 }

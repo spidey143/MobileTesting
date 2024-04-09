@@ -6,12 +6,13 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.appium.AppiumClickOptions.tap;
 
-public class Button extends BaseElement{
+public class Button extends BaseElement {
     public Button(String text, String name) {
-        super(AppiumBy.xpath("//android.widget.Button[@text='"+text+"']"), name);
+        super(AppiumBy.xpath("//android.widget.Button[@text='" + text + "']"), "Кнопка: {'" + name + "'}");
     }
+
     public Button(By by, String name) {
-        super(by, name);
+        super(by, "Кнопка: {'" + name + "'}");
     }
 
     public void buttonTap() {

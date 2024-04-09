@@ -29,11 +29,11 @@ public class CreateRequestScreen {
     public SelenideElement comment;
     public Button addDocumentButton = new Button(
             AppiumBy.xpath(""),
-            "Кнопка добавления документа");
+            "Добавление документа");
     public Button cancelButton = new Button(
             AppiumBy.xpath("//android.widget.TextView[@text=\"Отменить\"]/.."),
-            "Кнопка 'Отменить'");
+            "Отменить");
     public Button createRequestButton = new Button(
             AppiumBy.xpath("//android.widget.TextView[@text=\"Создать заявку\"]/.."),
-            "Кнопка 'Создать заявку'");
+            "Создать заявку");
 }

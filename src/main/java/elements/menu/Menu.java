@@ -9,22 +9,24 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.appium.AppiumClickOptions.tap;
+import static screens.BaseScreen.menu;
 
 public class Menu {
     public Button openMenuButton = new Button(
             AppiumBy.xpath("(//android.widget.Button[@resource-id=\"RNE__ICON__CONTAINER_ACTION\"])[1]"),
-            "Кнопка для открытия Меню");
+            "Открыть меню");
 
     @Step("Открыть страницу \"{menuSection}\"")
     public void openMenuSection(MenuSections menuSection) {
         openMenuButton.buttonTap();
-        $(AppiumBy.xpath("//android.widget.TextView[@text='" + menuSection.getName() + "']"))
-                .$(AppiumBy.xpath("/..")).click(tap());
+        $(AppiumBy.xpath("//android.widget.TextView[@text='" + menuSection.getName() + "']/parent::*"))
+                .click(tap());
     }
 
     @Step("Открыть личный кабинет")
     public void openPersonalCabinet(){
-        $(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"listItemTitle\" and @text=\"Диспетчер\"]"))
-                .$(AppiumBy.xpath("/../..")).click(tap());
+        menu.openMenuButton.buttonTap();
+        $(AppiumBy.xpath("//android.widget.TextView[@text=\"Диспетчер\"]/parent::*/parent::*"))
+                .click(tap());
     }
 }

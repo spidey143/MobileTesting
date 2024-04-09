@@ -3,6 +3,7 @@ package screens;
 import com.beust.ah.A;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import elements.Button;
 import io.appium.java_client.AppiumBy;
 import lombok.Getter;
 
@@ -14,5 +15,7 @@ public class PersonalCabinetScreen {
     private SelenideElement textSize = $(AppiumBy.xpath("//android.widget.TextView[@text=\"Размер текста\"]"));
     private SelenideElement updatePO = $(AppiumBy.xpath("//android.widget.TextView[@text=\"Обновление ПО\"]"));
     private SelenideElement turnOnDarkTheme = $(AppiumBy.xpath("//android.widget.TextView[@text=\"Включить тёмную тему\"]"));
-    private SelenideElement exitButton = $(AppiumBy.xpath("//android.widget.TextView[@text=\"Выйти\"]"));
+    public Button exitButton = new Button(
+            AppiumBy.xpath("//android.widget.TextView[@text=\"Выйти\"]"),
+            "Выйти" );
 }

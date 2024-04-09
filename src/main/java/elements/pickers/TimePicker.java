@@ -17,15 +17,15 @@ public class TimePicker {
     public TimePicker() {
         toggleModeToKeyboardButton = new Button(
                 AppiumBy.xpath("//android.widget.ImageButton"),
-                "Кнопка перехода в режим ввода текста"
+                "Переход в режим ввода текста"
         );
         hourInputField = new TextField(
                 By.id("android:id/input_hour"),
-                "Текстовое поле ввода часов"
+                "Ввод часов"
         );
         minutesInputField = new TextField(
                 By.id("android:id/input_minute"),
-                "Текстовое поле ввода минут"
+                "Ввод минут"
         );
         cancelButton = new Button("ОТМЕНА", "Отменить выбора даты");
         okButton = new Button("ОК", "Подтвердить выбора даты");
