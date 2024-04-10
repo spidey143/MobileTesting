@@ -34,7 +34,7 @@ public class DatePicker {
     }
 
     @Step("Установить дату {date}")
-    public void selectDate(String date){
+    public void setDate(String date){
         String[] rDate = date.split("\\.");
         String day = rDate[0];
         String month = rDate[1];
@@ -60,5 +60,6 @@ public class DatePicker {
                 "//android.view.View[@resource-id=\"android:id/month_view\"]//android.view.View"))
                 .find(Condition.text(day))
                 .click(tap());
+        okButton.buttonTap();
     }
 }

@@ -16,7 +16,7 @@ public class Menu {
             AppiumBy.xpath("(//android.widget.Button[@resource-id=\"RNE__ICON__CONTAINER_ACTION\"])[1]"),
             "Открыть меню");
 
-    @Step("Открыть страницу \"{menuSection}\"")
+    @Step("Перейти на экран \"{menuSection}\"")
     public void openMenuSection(MenuSections menuSection) {
         openMenuButton.buttonTap();
         $(AppiumBy.xpath("//android.widget.TextView[@text='" + menuSection.getName() + "']/parent::*"))
