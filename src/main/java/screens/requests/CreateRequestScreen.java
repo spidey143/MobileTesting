@@ -12,11 +12,11 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CreateRequestScreen {
-    public SelectForm service = new SelectForm("Услуга");
-    public SelectForm customer = new SelectForm("Заказчик");
-    public SelectForm airline = new SelectForm("Авиакомпания");
-    public SelectForm operator = new SelectForm("Оператор");
-    public SelectForm office = new SelectForm("Офис");
+    public SelectForm service = new SelectForm("Услуга*");
+    public SelectForm customer = new SelectForm("Заказчик*");
+    public SelectForm airline = new SelectForm("Авиакомпания*");
+    public SelectForm operator = new SelectForm("Оператор*");
+    public SelectForm office = new SelectForm("Офис*");
     public SelectForm numberVs = new SelectForm("Номера ВС");
     public TextField flightNumber = new TextField(
             AppiumBy.xpath(""), "Номер рейса");
@@ -27,9 +27,9 @@ public class CreateRequestScreen {
     public TimePicker endPlanTp = new TimePicker();
     private SelenideElement planTotalDuration; //ПОКА ПОх
     private SelenideElement closeCheckBox; //ПОКА ПОх
-    public SelectForm platform = new SelectForm("Перрон");
+    public SelectForm platform = new SelectForm("Перрон*");
     public SelectForm parkingPlace = new SelectForm("Место стоянки");
-    public SelectForm jobView = new SelectForm("Вид Работы");
+    public SelectForm jobView = new SelectForm("Вид Работы*");
     public TextField count = new TextField(AppiumBy.xpath(""),"Количество");
     public TextField comment =  new TextField(AppiumBy.xpath(""),"Комментарий");
     public TextField additionalInfo =  new TextField(AppiumBy.xpath(""),"Дополнительная информация / WO");

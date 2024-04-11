@@ -15,14 +15,14 @@ public class RequestsSteps implements BaseScreen {
             Integer count, String comment, String additionalInfo
     ) {
         requestsScreen.createRequestButton.buttonTap();
-        createRequestScreen.service.selectItem(service);
-        createRequestScreen.customer.selectItem(customer);
-        createRequestScreen.airline.selectItem(airline);
-        createRequestScreen.operator.selectItem(operator);
-        createRequestScreen.office.selectItem(office);
-        createRequestScreen.numberVs.selectItem(numberVs);
+        createRequestScreen.service.open().selectItem(service);
+        createRequestScreen.customer.open().selectItem(customer);
+        createRequestScreen.airline.open().selectItem(airline);
+        createRequestScreen.operator.open().selectItem(operator);
+        createRequestScreen.office.open().selectItem(office);
+        createRequestScreen.numberVs.open().selectItem(numberVs);
         createRequestScreen.flightNumber.setValue(flightNumber);
-        createRequestScreen.typeVs.selectItem(typeVs);
+        createRequestScreen.typeVs.open().selectItem(typeVs);
         createRequestScreen.startPlanDp.setDate(startDate);
         createRequestScreen.starPlanTp.setTime(startTime);
         createRequestScreen.endPlanDp.setDate(endDate);

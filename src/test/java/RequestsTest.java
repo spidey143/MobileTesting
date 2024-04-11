@@ -8,7 +8,7 @@ public class RequestsTest extends BaseTest implements Steps {
     public void addRequestTest(){
         login();
         REQUESTS_STEPS.createRequest(
-                "Предоставление спецтехники и оборудования для погрузочно разгрузочных работ",
+                "Предоставление спецтехники и оборудования для погрузочно-разгрузочных работ",
                 "АЗУР эйр",
                 "ЮТ, ПАО \"ЮТэйр\" (UT, UTA)",
                 "UTG",

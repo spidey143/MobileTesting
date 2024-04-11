@@ -11,33 +11,52 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.appium.AppiumClickOptions.tap;
 
-public class SelectForm extends BaseElement{
+public class SelectForm extends BaseElement {
+    public Button closeFormButton;
+    public Button resetButton;
+    public Button applyButton;
     private String nameForOpen;
     private SelenideElement title;
     private SelenideElement search;
     private ElementsCollection items;
-    public Button resetButton;
-    public Button applyButton;
 
     public SelectForm(String name) {
-        super(AppiumBy.xpath("//android.widget.TextView[@text='" + name + "']/parent::*"),
+        super(AppiumBy.xpath("//android.widget.TextView[@text='" + name + "']/.."),
                 "Форма выбора поля: {'" + name + "'}");
         this.nameForOpen = name;
-        this.title = $(AppiumBy.xpath("")).as("Заголовок формы"); //TODO: добавить локатор
-        this.search = $(AppiumBy.xpath("")).as("Поиск"); //TODO: добавить локатор
-        this.items = $$(AppiumBy.xpath("")).as("Список доступных значений"); //TODO: добавить локатор
-        this.applyButton = new Button(By.xpath("//button[text()='Apply']"), "Применить"); //TODO: добавить локатор
-        this.resetButton = new Button(By.xpath("//button[text()='Reset']"), "Сбросить"); //TODO: добавить локатор
+        this.closeFormButton = new Button(AppiumBy.xpath(
+                "//android.widget.TextView[@text='" + name + "']" +
+                        "/../android.view.ViewGroup[1]//android.widget.Button"),
+                "Закрыть");
+        this.title = $(AppiumBy.xpath("//android.widget.TextView[@text='" + name + "']"))
+                .as("Заголовок формы");
+        this.search = $(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"RNE__SearchBar\"]"))
+                .as("Поиск");
+        this.items = $$(AppiumBy.xpath("(//android.widget.ScrollView)[2]//android.widget.CheckBox/android.widget.TextView"))
+                .as("Список доступных значений");
+        this.applyButton = new Button(By.xpath("//android.widget.TextView[@text=\"Применить\"]/.."),
+                "Применить");
+        this.resetButton = new Button(By.xpath("//android.widget.TextView[@text=\"Сбросить\"]/.."),
+                "Сбросить");
     }
 
     @Step("Выбрать пункт: {itemName}")
-    public void selectItem(String itemName){
-        this.items.find(Condition.text(itemName)).click(tap());
+    public void selectItem(String itemName) {
+        SelenideElement foundItem = this.items.find(Condition.text(itemName));
+        if (foundItem.isDisplayed()) {
+            if (!foundItem.isSelected()) foundItem.click(tap());
+        } else {
+            search.setValue(itemName);
+            foundItem.click(tap());
+        }
         this.applyButton.buttonTap();
     }
 
     @Step("Открыть форму выбора поля {fieldName}")
-    public void openSelectForm(){
-        $(AppiumBy.xpath("'" + this.nameForOpen + "'")).click(tap());
+    public SelectForm open() {
+        $(AppiumBy.xpath("//android.widget.TextView[@text='" + this.nameForOpen + "']/.." +
+                "//android.widget.Button"))
+                .click();
+        return this;
     }
 }
