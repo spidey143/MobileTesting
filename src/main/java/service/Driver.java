@@ -2,6 +2,7 @@ package service;
 
 import com.codeborne.selenide.WebDriverProvider;
 import com.codeborne.selenide.appium.SelenideAppium;
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import org.aeonbits.owner.ConfigFactory;
@@ -17,6 +18,7 @@ import java.time.Duration;
 
 public class Driver implements WebDriverProvider {
     private static final TestConfig CONFIG = ConfigFactory.create(TestConfig.class);
+    protected static AndroidDriver driver;
 
     @Nonnull
     @Override
@@ -29,7 +31,7 @@ public class Driver implements WebDriverProvider {
                 .setAutomationName(CONFIG.getAutomationName())
                 .setNoReset(CONFIG.getNoReset());
         try {
-            AndroidDriver driver = new AndroidDriver(new URL(CONFIG.getUrl()), options);
+            driver = new AndroidDriver(new URL(CONFIG.getUrl()), options);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             return driver;
         } catch (IOException e) {
@@ -38,6 +40,11 @@ public class Driver implements WebDriverProvider {
     }
 
     public static void closeApp() {
-        SelenideAppium.terminateApp(CONFIG.getPackage());
+        driver.quit();
+       /* driver.executeScript(
+                "gesture: swipe",
+                ImmutableMap.of("elementId", elementId,
+                "percentage", 50,
+                "direction", "down"));*/
     }
 }

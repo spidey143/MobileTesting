@@ -29,12 +29,13 @@ public class BaseTest implements BaseScreen {
             mainScreen.loginButton.buttonTap();
         }
         SelenideAppium.switchTo().context("WEBVIEW_chrome");
+
         authScreen.usernameField.setValue("ODispatcher");
         authScreen.passwordField.setValue("12345");
         authScreen.loginButton.buttonClick();
 
         SelenideAppium.switchTo().context("NATIVE_APP");
-        if (requestsScreen.updateButton.isVisibilityAfter()) SelenideAppium.back();
+        requestsScreen.dismissUpdateNotification();
     }
 
     @Step("Выход из акканунта")

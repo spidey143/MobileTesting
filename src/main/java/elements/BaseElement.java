@@ -4,6 +4,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebElementCondition;
 import com.codeborne.selenide.appium.SelenideAppium;
+import com.codeborne.selenide.appium.SelenideAppiumElement;
+import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 
 import java.time.Duration;
@@ -43,8 +45,5 @@ public class BaseElement {
 
     public String getCssValue(String value) {
         return element.getCssValue(value);
-    }
-    public boolean isVisibilityAfter() {
-        return element.shouldBe(Condition.visible, Duration.ofSeconds(10)).is(Condition.visible);
     }
 }

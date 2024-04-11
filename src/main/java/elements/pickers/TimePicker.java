@@ -1,20 +1,26 @@
 package elements.pickers;
 
 import com.codeborne.selenide.SelenideElement;
+import elements.BaseElement;
 import elements.Button;
 import elements.TextField;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-public class TimePicker {
+import static com.codeborne.selenide.Selenide.$;
+
+public class TimePicker extends BaseElement {
+    private String nameForOpen;
     public Button toggleModeToKeyboardButton;
     public TextField minutesInputField;
     public TextField hourInputField;
     public Button cancelButton;
     public Button okButton;
 
-    public TimePicker() {
+    public TimePicker(String name) {
+        super(AppiumBy.id("android:id/timePicker"), "тайм пикер поля" + name);
+        this.nameForOpen = name;
         toggleModeToKeyboardButton = new Button(
                 AppiumBy.xpath("//android.widget.ImageButton"),
                 "Переход в режим ввода текста"

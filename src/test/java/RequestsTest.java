@@ -10,10 +10,8 @@ public class RequestsTest extends BaseTest implements Steps {
         REQUESTS_STEPS.createRequest(
                 "Предоставление спецтехники и оборудования для погрузочно-разгрузочных работ",
                 "АЗУР эйр",
-                "ЮТ, ПАО \"ЮТэйр\" (UT, UTA)",
-                "UTG",
                 "Офис UTG",
-                "RA-73047",
+                "RA-73080",
                 "testreys",
                 "A109",
                 "10.04.2024", "10:00",

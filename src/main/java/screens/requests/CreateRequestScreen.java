@@ -17,22 +17,21 @@ public class CreateRequestScreen {
     public SelectForm airline = new SelectForm("Авиакомпания*");
     public SelectForm operator = new SelectForm("Оператор*");
     public SelectForm office = new SelectForm("Офис*");
-    public SelectForm numberVs = new SelectForm("Номера ВС");
-    public TextField flightNumber = new TextField(
-            AppiumBy.xpath(""), "Номер рейса");
+    public SelectForm numberVs = new SelectForm("Номер ВС");
+    public TextField flightNumber = new TextField("Номер рейса");
     public SelectForm typeVs = new SelectForm("Тип ВС");;
-    public DatePicker startPlanDp = new DatePicker();
-    public TimePicker starPlanTp = new TimePicker();
-    public DatePicker endPlanDp = new DatePicker();
-    public TimePicker endPlanTp = new TimePicker();
+    public DatePicker startPlanDp = new DatePicker("Начало (план)*");
+    public TimePicker starPlanTp = new TimePicker("Начало (план)*");
+    public DatePicker endPlanDp = new DatePicker("Окончание (план)");
+    public TimePicker endPlanTp = new TimePicker("Окончание (план)");
     private SelenideElement planTotalDuration; //ПОКА ПОх
     private SelenideElement closeCheckBox; //ПОКА ПОх
     public SelectForm platform = new SelectForm("Перрон*");
     public SelectForm parkingPlace = new SelectForm("Место стоянки");
     public SelectForm jobView = new SelectForm("Вид Работы*");
-    public TextField count = new TextField(AppiumBy.xpath(""),"Количество");
-    public TextField comment =  new TextField(AppiumBy.xpath(""),"Комментарий");
-    public TextField additionalInfo =  new TextField(AppiumBy.xpath(""),"Дополнительная информация / WO");
+    public TextField count = new TextField("Количество");
+    public TextField comment =  new TextField("Комментарий");
+    public TextField additionalInfo =  new TextField("Дополнительная информация / WO");
     public Button addDocumentButton = new Button(AppiumBy.xpath(""),"Добавление документа");
     public Button cancelButton = new Button(
             AppiumBy.xpath("//android.widget.TextView[@text=\"Отменить\"]/.."),

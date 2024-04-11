@@ -34,9 +34,11 @@ public class SelectForm extends BaseElement {
                 .as("Поиск");
         this.items = $$(AppiumBy.xpath("(//android.widget.ScrollView)[2]//android.widget.CheckBox/android.widget.TextView"))
                 .as("Список доступных значений");
-        this.applyButton = new Button(By.xpath("//android.widget.TextView[@text=\"Применить\"]/.."),
+        this.applyButton = new Button(
+                By.xpath("//android.widget.TextView[@text=\"Применить\"]/.."),
                 "Применить");
-        this.resetButton = new Button(By.xpath("//android.widget.TextView[@text=\"Сбросить\"]/.."),
+        this.resetButton = new Button(
+                By.xpath("//android.widget.TextView[@text=\"Сбросить\"]/.."),
                 "Сбросить");
     }
 
@@ -52,7 +54,7 @@ public class SelectForm extends BaseElement {
         this.applyButton.buttonTap();
     }
 
-    @Step("Открыть форму выбора поля {fieldName}")
+    @Step("Открыть форму выбора поля: {this.nameForOpen}")
     public SelectForm open() {
         $(AppiumBy.xpath("//android.widget.TextView[@text='" + this.nameForOpen + "']/.." +
                 "//android.widget.Button"))
