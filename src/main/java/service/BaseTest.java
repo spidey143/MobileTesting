@@ -1,18 +1,15 @@
 package service;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.appium.SelenideAppium;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import screens.BaseScreen;
+import screens.base.BaseScreen;
 
-import static com.codeborne.selenide.appium.AppiumClickOptions.tap;
-
-public class BaseTest implements BaseScreen {
+public class BaseTest extends Driver implements BaseScreen {
 
     private final AppiumDriverLocalService APPIUM_SERVICE = new AppiumServiceBuilder()
             .usingPort(4723).withArgument(() -> "--allow-insecure","chromedriver_autodownload").build();
@@ -30,8 +27,8 @@ public class BaseTest implements BaseScreen {
         }
         SelenideAppium.switchTo().context("WEBVIEW_chrome");
 
-        authScreen.usernameField.setValue("ODispatcher");
-        authScreen.passwordField.setValue("12345");
+        authScreen.usernameField.setValue(CONFIG.getUsername());
+        authScreen.passwordField.setValue(CONFIG.getPassword());
         authScreen.loginButton.buttonClick();
 
         SelenideAppium.switchTo().context("NATIVE_APP");
@@ -51,7 +48,7 @@ public class BaseTest implements BaseScreen {
     }
     @AfterMethod(description = "Закрытие приложения")
     public void tearDown() {
-        WebDriverRunner.driver().close();
+        Driver.closeApp();
     }
 
     @AfterSuite(description = "Остановка appium")

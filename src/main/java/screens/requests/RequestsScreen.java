@@ -6,7 +6,7 @@ import com.codeborne.selenide.appium.SelenideAppium;
 import elements.Button;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
-import screens.BaseScreen;
+import screens.base.BaseScreen;
 
 import java.time.Duration;
 

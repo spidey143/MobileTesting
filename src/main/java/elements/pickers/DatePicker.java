@@ -1,6 +1,7 @@
 package elements.pickers;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.appium.AppiumScrollOptions;
 import com.codeborne.selenide.appium.ScrollDirection;
@@ -10,8 +11,7 @@ import elements.Button;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.appium.AppiumClickOptions.tap;
 
 public class DatePicker extends BaseElement {
@@ -69,9 +69,10 @@ public class DatePicker extends BaseElement {
 
     @Step("Открыть дейт пикер поля: {this.nameForOpen}")
     public DatePicker open() {
-        $(AppiumBy.xpath("//android.widget.TextView[@text='" + this.nameForOpen + "']/.." +
+        SelenideAppium.$(AppiumBy.xpath("//android.widget.TextView[@text='" + this.nameForOpen + "']/.." +
                 "//android.widget.Button"))
-                .click();
+                .scroll(AppiumScrollOptions.down())
+                .click(tap());
         return this;
     }
 }

@@ -1,15 +1,12 @@
 package elements.menu;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
 import elements.Button;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.appium.AppiumClickOptions.tap;
-import static screens.BaseScreen.menu;
+import static screens.base.BaseScreen.menu;
 
 public class Menu {
     public Button openMenuButton = new Button(

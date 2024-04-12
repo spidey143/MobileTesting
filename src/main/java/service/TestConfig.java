@@ -28,4 +28,10 @@ public interface TestConfig extends Config {
 
     @Config.Key("noReset")
     Boolean getNoReset();
+
+    @Config.Key("username")
+    String getUsername();
+
+    @Config.Key("password")
+    String getPassword();
 }

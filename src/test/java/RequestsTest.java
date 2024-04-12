@@ -13,7 +13,27 @@ public class RequestsTest extends BaseTest implements Steps {
                 "Офис UTG",
                 "RA-73080",
                 "testreys",
-                "A109",
+                "10.04.2024", "10:00",
+                "11.04.2024", "20:00",
+                "ВНК - Перрон1",
+                "10 (ТЭ)",
+                "Предоставление багажной тележки",
+                10,
+                "Тестовый комент(-_-)",
+                "Тестовая доп.инфа"
+        );
+        logout();
+    }
+
+    @Test(testName = "Отменить заявку")
+    public void cancelRequestTest(){
+        login();
+        REQUESTS_STEPS.createRequest(
+                "Предоставление спецтехники и оборудования для погрузочно-разгрузочных работ",
+                "АЗУР эйр",
+                "Офис UTG",
+                "RA-73080",
+                "testreys",
                 "10.04.2024", "10:00",
                 "11.04.2024", "20:00",
                 "ВНК - Перрон1",
@@ -23,6 +43,7 @@ public class RequestsTest extends BaseTest implements Steps {
                 "Тестовый комент(-_-)",
                 "Тестовая доп.инфа"
         );
+        //REQUESTS_STEPS.cancelRequest();
         logout();
     }
 

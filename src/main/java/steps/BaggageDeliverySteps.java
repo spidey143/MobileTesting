@@ -3,6 +3,15 @@ package steps;
 import io.qameta.allure.Step;
 
 public class BaggageDeliverySteps {
+
+
+    @Step("Создать заказ на доставку багажа")
+    public void createOrderOnBaggageDelivery(){
+
+    }
+
+
+
     @Step("Отменить заказ на доставку багажа")
     public void cancelOrder(){
 

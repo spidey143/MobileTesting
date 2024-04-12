@@ -28,11 +28,13 @@ public class CreateRequestScreen {
     private SelenideElement closeCheckBox; //ПОКА ПОх
     public SelectForm platform = new SelectForm("Перрон*");
     public SelectForm parkingPlace = new SelectForm("Место стоянки");
-    public SelectForm jobView = new SelectForm("Вид Работы*");
-    public TextField count = new TextField("Количество");
+    public SelectForm jobView = new SelectForm("Вид работы*");
+    public TextField count = new TextField("Количество*");
     public TextField comment =  new TextField("Комментарий");
     public TextField additionalInfo =  new TextField("Дополнительная информация / WO");
-    public Button addDocumentButton = new Button(AppiumBy.xpath(""),"Добавление документа");
+    public Button addDocumentButton = new Button(AppiumBy.xpath(
+            "//android.widget.TextView[@text=\"Документы\"]/..//android.widget.Button"),
+            "Добавление документа");
     public Button cancelButton = new Button(
             AppiumBy.xpath("//android.widget.TextView[@text=\"Отменить\"]/.."),
             "Отменить");
