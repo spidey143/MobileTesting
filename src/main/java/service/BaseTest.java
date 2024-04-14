@@ -9,6 +9,8 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import screens.base.BaseScreen;
 
+import static com.codeborne.selenide.Selenide.sleep;
+
 public class BaseTest extends Driver implements BaseScreen {
 
     private final AppiumDriverLocalService APPIUM_SERVICE = new AppiumServiceBuilder()
@@ -18,6 +20,7 @@ public class BaseTest extends Driver implements BaseScreen {
     public void init() {
         APPIUM_SERVICE.start(); // запуск appium
         Configuration.browser = Driver.class.getName();
+        Configuration.timeout = 10000;
     }
 
     @Step("Aвторизация в системе")

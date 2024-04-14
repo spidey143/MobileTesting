@@ -1,8 +1,10 @@
 package steps;
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import screens.base.BaseScreen;
+import service.Driver;
 
 public class RequestsSteps implements BaseScreen {
 
@@ -28,16 +30,25 @@ public class RequestsSteps implements BaseScreen {
         createRequestScreen.endPlanDp.open().setDate(endDate);
         createRequestScreen.endPlanTp.setTime(endTime);
 
-        createRequestScreen.addDocumentButton.scrollTo();
-
+        Driver.scroll(0);
+        Selenide.sleep(1000);
         createRequestScreen.platform.openForm().selectItem(platform);
+        Driver.scroll(50);
+        Selenide.sleep(1000);
         createRequestScreen.parkingPlace.openForm().selectItem(parkingPlace);
+        Driver.scroll(100);
+        Selenide.sleep(1000);
         createRequestScreen.jobView.openForm().selectItem(jobView);
         createRequestScreen.count.setValue(String.valueOf(count));
+
+        createRequestScreen.comment.scrollTo();
         createRequestScreen.comment.setValue(comment);
+
+        createRequestScreen.additionalInfo.scrollTo();
         createRequestScreen.additionalInfo.setValue(additionalInfo);
 
         createRequestScreen.createRequestButton.buttonTap();
+        Selenide.sleep(5000);
         createdRequestScreen.backButton.buttonTap();
     }
 

@@ -26,7 +26,8 @@ public class SelectForm extends BaseElement {
     private String nameForOpen;
     private SelenideElement title;
     private SelenideElement search;
-    private ElementsCollection items = $$(AppiumBy.xpath("(//android.widget.ScrollView)[2]//android.widget.CheckBox/android.widget.TextView")).as("Список доступных значений");;
+    //private ElementsCollection items = $$(AppiumBy.xpath("(//android.widget.ScrollView)[2]//android.widget.CheckBox/android.widget.TextView"))
+    // .as("Список доступных значений");
 
     public SelectForm(String name) {
         super(AppiumBy.xpath("//android.widget.TextView[@text='" + name + "']/parent::*"),
@@ -38,22 +39,23 @@ public class SelectForm extends BaseElement {
 
     @Step("Выбрать пункт: {itemName}")
     public void selectItem(String itemName) {
-        SelenideElement foundItem = this.items.find(Condition.text(itemName))
-                .shouldBe(Condition.visible);
-       /* if (foundItem.isDisplayed()) {
-            if (!foundItem.isSelected()) foundItem.click(tap());
-        } else {
-            search.setValue(itemName);
-            foundItem.click(tap());
-        }*/
-        foundItem.click(tap());
+        $(AppiumBy.xpath("(//android.widget.ScrollView)[2]//android.widget.CheckBox/android.widget.TextView[@text='" + itemName + "']"))
+                .shouldBe(Condition.visible)
+                .click(tap());
         this.applyButton.buttonTap();
     }
 
     @Step("Открыть форму выбора поля: {this.nameForOpen}")
     public SelectForm openForm() {
-        SelenideAppium.$(AppiumBy.xpath("//android.widget.TextView[@text='" + nameForOpen + "']/..//android.widget.TextView[@text=\"Выберите\" or @text=\"Загрузка данных...\"]/..//android.widget.Button"))
+        SelenideAppium.$(AppiumBy.xpath("//android.widget.TextView[@text='" + nameForOpen + "']/..//android.widget.TextView[@text=\"Выберите\"]/..//android.widget.Button"))
+                .shouldBe(Condition.visible)
                 .click(tap());
+
+        /*SelenideAppium.$(AppiumBy.xpath("//android.widget.TextView[@text='" + nameForOpen + "']/../android.view.ViewGroup/android.view.ViewGroup/android.widget.TextView"))
+                .shouldHave(Condition.text("Выберите"))
+                .ancestor("")
+                .find(AppiumBy.xpath(".//android.widget.Button"))
+                .click(tap());*/
         Assert.assertTrue(formIsOpened());
         return this;
     }

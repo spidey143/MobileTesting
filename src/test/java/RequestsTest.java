@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Selenide;
 import org.testng.annotations.Test;
 import service.BaseTest;
 import steps.RequestsSteps;
@@ -22,6 +23,7 @@ public class RequestsTest extends BaseTest implements Steps {
                 "Тестовый комент(-_-)",
                 "Тестовая доп.инфа"
         );
+        Selenide.sleep(1000);
         logout();
     }
 
@@ -43,6 +45,7 @@ public class RequestsTest extends BaseTest implements Steps {
                 "Тестовый комент(-_-)",
                 "Тестовая доп.инфа"
         );
+
         //REQUESTS_STEPS.cancelRequest();
         logout();
     }
