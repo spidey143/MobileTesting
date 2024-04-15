@@ -41,8 +41,8 @@ public class Driver implements WebDriverProvider {
                 .setAutomationName(CONFIG.getAutomationName())
                 .setNewCommandTimeout(Duration.ofSeconds(20))
                 .setAppWaitDuration(Duration.ofSeconds(10))
-                .setAdbExecTimeout(Duration.ofSeconds(20))
-                .setNoReset(true);
+                .setAdbExecTimeout(Duration.ofSeconds(20));
+                /*.setNoReset(true);*/
         try {
             driver = new AndroidDriver(new URL(CONFIG.getUrl()), options);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

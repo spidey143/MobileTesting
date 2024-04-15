@@ -1,6 +1,7 @@
 package service;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.appium.SelenideAppium;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
@@ -28,6 +29,7 @@ public class BaseTest extends Driver implements BaseScreen {
         if (mainScreen.loginButton.isVisibility()) {
             mainScreen.loginButton.buttonTap();
         }
+        Selenide.sleep(5000);
         SelenideAppium.switchTo().context("WEBVIEW_chrome");
 
         authScreen.usernameField.setValue(CONFIG.getUsername());
@@ -48,6 +50,7 @@ public class BaseTest extends Driver implements BaseScreen {
     @BeforeMethod(description = "Октрытие приложения")
     public void setUp() {
         SelenideAppium.launchApp();
+        mainScreen.testEnvironmentActivate();
     }
     @AfterMethod(description = "Закрытие приложения")
     public void tearDown() {
