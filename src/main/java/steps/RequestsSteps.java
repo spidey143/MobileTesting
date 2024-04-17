@@ -49,28 +49,22 @@ public class RequestsSteps implements BaseScreen {
 
         createRequestScreen.createRequestButton.buttonTap();
         Selenide.sleep(5000);
-        createdRequestScreen.backButton.buttonTap();
     }
 
     @Step("Прикрепить документы к заявке")
     public void addDocumentsToRequest() {
         createRequestScreen.addDocumentButton.buttonTap();
-        //
     }
 
     @Step("Отменить заявку")
-    public void deleteRequest() {
-
+    public void cancelRequest() {
+        createdRequestScreen.cancelRequestButton.scrollTo();
+        createdRequestScreen.cancelRequestButton.buttonTap();
     }
 
     @Step("Добавить комментарий к заявке")
-    public void addCommentToRequest() {
-
-    }
-
-    @Step("Редактировать заказ на доставку багажа")
-    public void editRequest() {
-
+    public void addCommentToRequest(String requestNumber) {
+        createdRequestScreen.chatButton.buttonTap();
     }
 
     @Step("Скопировать заявку")

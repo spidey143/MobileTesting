@@ -39,14 +39,14 @@ public class RequestsTest extends BaseTest implements Steps {
                 "10.04.2024", "10:00",
                 "11.04.2024", "20:00",
                 "ВНК - Перрон1",
-                "01 (T)",
+                "10 (ТЭ)",
                 "Предоставление багажной тележки",
                 10,
                 "Тестовый комент(-_-)",
                 "Тестовая доп.инфа"
         );
-
-        //REQUESTS_STEPS.cancelRequest();
+        Selenide.sleep(1000);
+        REQUESTS_STEPS.cancelRequest();
         logout();
     }
 
