@@ -37,7 +37,7 @@ public class BaggageDeliverySteps implements BaseScreen {
 
         createOrderBaggageDeliveryScreen.baggageClaimAirport.openForm().selectItem(baggageClaimAirport);
         createOrderBaggageDeliveryScreen.deliveryAddress.openForm().selectItem(deliveryAddress);
-        createOrderBaggageDeliveryScreen.deliveryTime.setTime(time);
+        createOrderBaggageDeliveryScreen.deliveryTime.open().setTime(time);
         createOrderBaggageDeliveryScreen.comment.setValue(comment);
         createOrderBaggageDeliveryScreen.createButton.buttonTap();
     }

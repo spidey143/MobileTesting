@@ -56,10 +56,10 @@ public class Driver implements WebDriverProvider {
         driver.quit();
     }
 
-    public static void scroll(Integer x) {
+    public static void scroll(Integer startY, Integer endY) {
         final var finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-        var start = new Point(483, 1812);
-        var end = new Point (497, 966 - x);
+        var start = new Point(550, startY);
+        var end = new Point (550, endY);
         var swipe = new Sequence(finger, 1);
         swipe.addAction(finger.createPointerMove(Duration.ofMillis(0),
                 PointerInput.Origin.viewport(), start.getX(), start.getY()));

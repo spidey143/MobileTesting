@@ -20,7 +20,7 @@ public class Menu {
                 .click(tap());
     }
 
-    @Step("Открыть личный кабинет")
+    //@Step("Открыть личный кабинет")
     public void openPersonalCabinet(){
         menu.openMenuButton.buttonTap();
         $(AppiumBy.xpath("//android.widget.TextView[@text=\"Диспетчер\"]/parent::*/parent::*"))

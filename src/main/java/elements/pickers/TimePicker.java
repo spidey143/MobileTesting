@@ -1,5 +1,6 @@
 package elements.pickers;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import elements.BaseElement;
 import elements.Button;
@@ -9,6 +10,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.appium.AppiumClickOptions.tap;
 
 public class TimePicker extends BaseElement {
     private String nameForOpen;
@@ -46,5 +48,12 @@ public class TimePicker extends BaseElement {
         hourInputField.setValue(hour);
         minutesInputField.setValue(minutes);
         okButton.buttonClick();
+    }
+
+    @Step("Открыть тайм пикер поля")
+    public TimePicker open(){
+        $(AppiumBy.xpath("")).shouldBe(Condition.visible)
+                .click(tap());
+        return this;
     }
 }

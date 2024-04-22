@@ -19,7 +19,7 @@ public class RequestsScreen implements BaseScreen {
             AppiumBy.xpath("//android.widget.TextView[@text=\"\uE145\"]//ancestor::android.widget.Button[1]"),
             "Cоздание заявки");
 
-    @Step("Убрать всплывающее уведомление об обновлении приложения")
+    //@Step("Убрать всплывающее уведомление об обновлении приложения")
     public void dismissUpdateNotification() {
         if (updateNotification.shouldBe(Condition.visible, Duration.ofSeconds(10)).is(Condition.visible))
             SelenideAppium.back();

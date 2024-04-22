@@ -1,5 +1,6 @@
 package service;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.appium.SelenideAppium;
@@ -28,18 +29,15 @@ public class BaseTest extends Driver implements BaseScreen {
 
     @Step("Aвторизация в системе")
     public void login() {
-        if (mainScreen.loginButton.isVisibility()) {
-            mainScreen.loginButton.buttonTap();
+        mainScreen.loginButton.buttonTap();
+        if (SelenideAppium.$(AppiumBy.id("com.android.chrome:id/control_container"))
+                .shouldBe(Condition.visible).isDisplayed()){
+            SelenideAppium.switchTo().context("WEBVIEW_chrome");
+            authScreen.usernameField.setValue(CONFIG.getUsername());
+            authScreen.passwordField.setValue(CONFIG.getPassword());
+            authScreen.loginButton.buttonClick();
+            SelenideAppium.switchTo().context("NATIVE_APP");
         }
-        Selenide.sleep(3000);
-        SelenideAppium.switchTo().context("WEBVIEW_chrome");
-
-        authScreen.usernameField.setValue(CONFIG.getUsername());
-        authScreen.passwordField.setValue(CONFIG.getPassword());
-        authScreen.loginButton.buttonClick();
-
-        Selenide.sleep(1000);
-        SelenideAppium.switchTo().context("NATIVE_APP");
         requestsScreen.dismissUpdateNotification();
     }
 
