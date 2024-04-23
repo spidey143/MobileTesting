@@ -14,9 +14,10 @@ public class TextField extends BaseElement{
     }
     public TextField(By by, String name) {
         super(by, "Текстовое поле: {'" + name + "'}");
+        this.name = name;
     }
 
-    @Step("Установить значение \"{value}\" в поле \"{name}\"")
+    @Step("Установить значение \"{value}\" в поле \"{this.name}\"")
     public void setValue(String value){
         element.shouldBe(Condition.visible).setValue(value);
     }

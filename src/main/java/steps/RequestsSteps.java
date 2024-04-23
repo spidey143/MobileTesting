@@ -36,7 +36,7 @@ public class RequestsSteps implements BaseScreen {
         createRequestScreen.endPlanTp.setTime(endTime);
         Driver.scroll(1700, 50);
         createRequestScreen.platform.openForm().selectItem(platform);
-        sleep(500);
+        Selenide.sleep(1000);
         createRequestScreen.parkingPlace.openForm().selectItem(parkingPlace);
         createRequestScreen.jobView.openForm().selectItem(jobView);
         createRequestScreen.count.setValue(String.valueOf(count));
@@ -48,7 +48,9 @@ public class RequestsSteps implements BaseScreen {
     public void tapOnCreateRequestButton(){
         createRequestScreen.createRequestButton.buttonTap();
     }
-
+    public void scrollToCreatedRequestActions() {
+        createdRequestScreen.copyRequestButton.scrollTo();
+    }
     @Step("Прикрепить документы к заявке")
     public void addDocumentsToRequest() {
         createRequestScreen.addDocumentButton.buttonTap();
@@ -56,14 +58,12 @@ public class RequestsSteps implements BaseScreen {
 
     @Step("Отменить заявку")
     public void cancelRequest() {
-        createdRequestScreen.copyRequestButton.scrollTo();
         createdRequestScreen.cancelRequestButton.buttonTap();
         createdRequestScreen.cancelRequestModalWindow.confirm.buttonTap();
     }
 
     @Step("Отказаться от заявки")
     public void refusalRequest(){
-        createdRequestScreen.copyRequestButton.scrollTo();
         createdRequestScreen.refusalServiceButton.buttonTap();
         createdRequestScreen.refusalRequestModalWindow.confirm.buttonTap();
     }
@@ -73,12 +73,24 @@ public class RequestsSteps implements BaseScreen {
         createdRequestScreen.chatButton.buttonTap();
     }
 
-    @Step("Проверить что действие \"{action}\" выполнилось")
-    public void checkActionIsSuccess(String action){
-        SelenideElement successNotification = $(AppiumBy.xpath("//android.widget.TextView[@text=\"Успешно\"]"));
-        Assert.assertTrue(
-                successNotification.isDisplayed(),
-                "Действие "+ action +"не выполнилось!"
+    @Step("Проверить что заявка отменена")
+    public void checkRequestIsCancelled(){
+        scrollToCreatedRequestActions();
+        Assert.assertFalse(
+                createdRequestScreen.cancelRequestButton.isVisibility(),
+                "Заявка не отменена!"
         );
+    }
+
+    @Step("Проверить что заявка создана")
+    public void checkRequestIsCreated(){
+        Assert.assertTrue(
+                createdRequestScreen.chatButton.isVisibility(),
+                "Заявка не создана!"
+        );
+    }
+
+    @Step("Проверить что произошел отказ от заявки")
+    public void checkRequestIsRefusal(){
     }
 }

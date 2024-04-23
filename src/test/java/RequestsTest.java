@@ -26,7 +26,7 @@ public class RequestsTest extends BaseTest implements Steps {
                 "Тестовая доп.инфа"
         );
         REQUESTS_STEPS.tapOnCreateRequestButton();
-        REQUESTS_STEPS.checkActionIsSuccess("Создание заявки");
+        REQUESTS_STEPS.checkRequestIsCreated();
         logout();
     }
 
@@ -50,9 +50,10 @@ public class RequestsTest extends BaseTest implements Steps {
                 "Тестовая доп.инфа"
         );
         REQUESTS_STEPS.tapOnCreateRequestButton();
-        REQUESTS_STEPS.checkActionIsSuccess("Создание заявки");
+        REQUESTS_STEPS.checkRequestIsCreated();
+        REQUESTS_STEPS.scrollToCreatedRequestActions();
         REQUESTS_STEPS.cancelRequest();
-        REQUESTS_STEPS.checkActionIsSuccess("Отмена заявки");
+        REQUESTS_STEPS.checkRequestIsCancelled();
         logout();
     }
 
@@ -76,9 +77,10 @@ public class RequestsTest extends BaseTest implements Steps {
                 "Тестовая доп.инфа"
         );
         REQUESTS_STEPS.tapOnCreateRequestButton();
-        REQUESTS_STEPS.checkActionIsSuccess("Создание заявки");
+        REQUESTS_STEPS.checkRequestIsCreated();
+        REQUESTS_STEPS.scrollToCreatedRequestActions();
         REQUESTS_STEPS.refusalRequest();
-        REQUESTS_STEPS.checkActionIsSuccess("Отказ от заявки");
+        REQUESTS_STEPS.checkRequestIsRefusal();
         logout();
     }
 

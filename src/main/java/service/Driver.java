@@ -42,10 +42,9 @@ public class Driver implements WebDriverProvider {
                 .setNewCommandTimeout(Duration.ofSeconds(20))
                 .setAppWaitDuration(Duration.ofSeconds(10))
                 .setAdbExecTimeout(Duration.ofSeconds(20));
-                /*.setNoReset(true);*/
         try {
             driver = new AndroidDriver(new URL(CONFIG.getUrl()), options);
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             return driver;
         } catch (IOException e) {
             throw new RuntimeException(e);

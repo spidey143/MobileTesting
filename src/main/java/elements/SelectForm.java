@@ -39,17 +39,19 @@ public class SelectForm extends BaseElement {
 
     @Step("Выбрать пункт: {itemName}")
     public void selectItem(String itemName) {
-        $(AppiumBy.xpath("(//android.widget.ScrollView)[2]//android.widget.CheckBox/android.widget.TextView[@text='" + itemName + "']"))
-                .shouldBe(Condition.visible)
-                .click(tap());
+        SelenideElement item =   $(AppiumBy.xpath("(//android.widget.ScrollView)[2]//android.widget.CheckBox/android.widget.TextView[@text='" + itemName + "']"));
+        if(!item.isDisplayed()){
+            SelenideElement openFormButton = Selenide.$(AppiumBy.xpath("//android.widget.TextView[@text='" + nameForOpen + "']/..//android.widget.TextView[@text=\"Выберите\"]/..//android.widget.Button"));
+            openFormButton.shouldBe(Condition.visible).click(tap());
+        }
+        item.shouldBe(Condition.visible).click(tap());
         this.applyButton.buttonTap();
     }
 
     @Step("Открыть форму выбора поля: {this.nameForOpen}")
     public SelectForm openForm() {
-        Selenide.$(AppiumBy.xpath("//android.widget.TextView[@text='" + nameForOpen + "']/..//android.widget.TextView[@text=\"Выберите\"]/..//android.widget.Button"))
-                .shouldBe(Condition.visible)
-                .click(tap());
+        SelenideElement openFormButton = Selenide.$(AppiumBy.xpath("//android.widget.TextView[@text='" + nameForOpen + "']/..//android.widget.TextView[@text=\"Выберите\"]/..//android.widget.Button"));
+        openFormButton.shouldBe(Condition.visible).click(tap());
         Assert.assertTrue(formIsOpened());
         return this;
     }
