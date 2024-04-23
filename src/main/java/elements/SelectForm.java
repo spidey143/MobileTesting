@@ -47,15 +47,9 @@ public class SelectForm extends BaseElement {
 
     @Step("Открыть форму выбора поля: {this.nameForOpen}")
     public SelectForm openForm() {
-        SelenideAppium.$(AppiumBy.xpath("//android.widget.TextView[@text='" + nameForOpen + "']/..//android.widget.TextView[@text=\"Выберите\"]/..//android.widget.Button"))
+        Selenide.$(AppiumBy.xpath("//android.widget.TextView[@text='" + nameForOpen + "']/..//android.widget.TextView[@text=\"Выберите\"]/..//android.widget.Button"))
                 .shouldBe(Condition.visible)
                 .click(tap());
-
-        /*SelenideAppium.$(AppiumBy.xpath("//android.widget.TextView[@text='" + nameForOpen + "']/../android.view.ViewGroup/android.view.ViewGroup/android.widget.TextView"))
-                .shouldHave(Condition.text("Выберите"))
-                .ancestor("")
-                .find(AppiumBy.xpath(".//android.widget.Button"))
-                .click(tap());*/
         Assert.assertTrue(formIsOpened());
         return this;
     }

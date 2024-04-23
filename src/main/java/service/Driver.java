@@ -45,7 +45,7 @@ public class Driver implements WebDriverProvider {
                 /*.setNoReset(true);*/
         try {
             driver = new AndroidDriver(new URL(CONFIG.getUrl()), options);
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             return driver;
         } catch (IOException e) {
             throw new RuntimeException(e);

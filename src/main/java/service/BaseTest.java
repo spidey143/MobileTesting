@@ -22,9 +22,14 @@ public class BaseTest extends Driver implements BaseScreen {
 
     @BeforeSuite(description = "Инициализация")
     public void init() {
-        APPIUM_SERVICE.start(); // запуск appium
+        APPIUM_SERVICE.start();
         Configuration.browser = Driver.class.getName();
-        Configuration.timeout = 10000;
+    }
+
+    @BeforeMethod(description = "Октрытие приложения")
+    public void setUp() {
+        SelenideAppium.launchApp();
+        mainScreen.testEnvironmentActivate();
     }
 
     @Step("Aвторизация в системе")
@@ -38,22 +43,19 @@ public class BaseTest extends Driver implements BaseScreen {
             authScreen.loginButton.buttonClick();
             SelenideAppium.switchTo().context("NATIVE_APP");
         }
+        else if (requestsScreen.createRequestButton.isVisibility()){
+            requestsScreen.dismissUpdateNotification();
+        }
         requestsScreen.dismissUpdateNotification();
     }
 
-    @Step("Выход из акканунта")
+    @Step("Выход из системы")
     public void logout(){
         while(!$(AppiumBy.xpath("//android.widget.TextView[@text='Заявки']")).isDisplayed())
             SelenideAppium.back();
         menu.openPersonalCabinet();
         personalCabinetScreen.exitButton.buttonTap();
         Assert.assertTrue(mainScreen.loginButton.isVisibility(), "Выход из акканунта не произошел!");
-    }
-
-    @BeforeMethod(description = "Октрытие приложения")
-    public void setUp() {
-        SelenideAppium.launchApp();
-        mainScreen.testEnvironmentActivate();
     }
     @AfterMethod(description = "Закрытие приложения")
     public void tearDown() {

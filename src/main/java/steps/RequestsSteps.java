@@ -16,8 +16,8 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class RequestsSteps implements BaseScreen {
 
-    @Step("Создать заявку")
-    public void createRequest(
+    @Step("Заполнить форму заявки")
+    public void fillingFormRequest(
             String service, String customer, String office, String numberVs,
             String flightNumber, String startDate,
             String startTime, String endDate, String endTime,
@@ -42,8 +42,11 @@ public class RequestsSteps implements BaseScreen {
         createRequestScreen.count.setValue(String.valueOf(count));
         createRequestScreen.comment.setValue(comment);
         createRequestScreen.additionalInfo.setValue(additionalInfo);
+    }
+
+    @Step("Нажать на кнопку \"Создать заявку\"")
+    public void tapOnCreateRequestButton(){
         createRequestScreen.createRequestButton.buttonTap();
-        Selenide.sleep(5000);
     }
 
     @Step("Прикрепить документы к заявке")
@@ -68,11 +71,6 @@ public class RequestsSteps implements BaseScreen {
     @Step("Добавить комментарий к заявке")
     public void addCommentToRequest(String requestNumber) {
         createdRequestScreen.chatButton.buttonTap();
-    }
-
-    @Step("Скопировать заявку")
-    public void copyRequest() {
-
     }
 
     @Step("Проверить что действие \"{action}\" выполнилось")

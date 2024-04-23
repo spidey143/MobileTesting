@@ -10,7 +10,7 @@ public class RequestsTest extends BaseTest implements Steps {
     @Description("Тестирование возмонжости добавления заявки для оказания услуги")
     public void addRequestTest(){
         login();
-        REQUESTS_STEPS.createRequest(
+        REQUESTS_STEPS.fillingFormRequest(
                 "Предоставление спецтехники и оборудования для погрузочно-разгрузочных работ",
                 "АЗУР эйр",
                 "Офис UTG",
@@ -25,6 +25,7 @@ public class RequestsTest extends BaseTest implements Steps {
                 "Тестовый комент(-_-)",
                 "Тестовая доп.инфа"
         );
+        REQUESTS_STEPS.tapOnCreateRequestButton();
         REQUESTS_STEPS.checkActionIsSuccess("Создание заявки");
         logout();
     }
@@ -33,7 +34,7 @@ public class RequestsTest extends BaseTest implements Steps {
     @Description("Тестирование возможности отмены ранее созданой заявки")
     public void cancelRequestTest(){
         login();
-        REQUESTS_STEPS.createRequest(
+        REQUESTS_STEPS.fillingFormRequest(
                 "Предоставление спецтехники и оборудования для погрузочно-разгрузочных работ",
                 "АЗУР эйр",
                 "Офис UTG",
@@ -48,17 +49,18 @@ public class RequestsTest extends BaseTest implements Steps {
                 "Тестовый комент(-_-)",
                 "Тестовая доп.инфа"
         );
+        REQUESTS_STEPS.tapOnCreateRequestButton();
         REQUESTS_STEPS.checkActionIsSuccess("Создание заявки");
         REQUESTS_STEPS.cancelRequest();
         REQUESTS_STEPS.checkActionIsSuccess("Отмена заявки");
         logout();
     }
 
-    /*@Test(testName = "Отказ от заявки", description = "Отказ от заявки")
+    @Test(testName = "Отказ от заявки", description = "Отказ от заявки")
     @Description("Тестирование возможности отказаться от заявки")
     public void refusalRequestTest(){
         login();
-        REQUESTS_STEPS.createRequest(
+        REQUESTS_STEPS.fillingFormRequest(
                 "Предоставление спецтехники и оборудования для погрузочно-разгрузочных работ",
                 "АЗУР эйр",
                 "Офис UTG",
@@ -73,10 +75,12 @@ public class RequestsTest extends BaseTest implements Steps {
                 "Тестовый комент(-_-)",
                 "Тестовая доп.инфа"
         );
-        Selenide.sleep(1000);
-        REQUESTS_STEPS.cancelRequest();
+        REQUESTS_STEPS.tapOnCreateRequestButton();
+        REQUESTS_STEPS.checkActionIsSuccess("Создание заявки");
+        REQUESTS_STEPS.refusalRequest();
+        REQUESTS_STEPS.checkActionIsSuccess("Отказ от заявки");
         logout();
-    }*/
+    }
 
     /*@Test(testName = "Редактировать заявку", description =  "Редактировать заявку")
     @Description("Тестирование возможности редактирования ранее созданой заявки")
