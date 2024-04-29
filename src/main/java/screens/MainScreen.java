@@ -1,17 +1,13 @@
 package screens;
-import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.appium.AppiumScrollOptions;
 import com.codeborne.selenide.appium.SelenideAppium;
-import elements.Button;
-import elements.SelectForm;
+import elements.base.Button;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.actions;
 
 public class MainScreen {
     public Button loginButton = new Button(AppiumBy.xpath("//android.widget.Button"), "Войти");

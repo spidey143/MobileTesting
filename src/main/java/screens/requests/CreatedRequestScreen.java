@@ -1,14 +1,8 @@
 package screens.requests;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
-import elements.Button;
-import elements.ModalWindow;
+import elements.base.Button;
+import elements.base.ModalWindow;
 import io.appium.java_client.AppiumBy;
-import io.qameta.allure.Step;
-import lombok.Getter;
-import lombok.Setter;
-import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
 

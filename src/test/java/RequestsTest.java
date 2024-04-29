@@ -1,14 +1,22 @@
-import com.codeborne.selenide.Selenide;
 import jdk.jfr.Description;
+import models.RequestModel;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import service.BaseTest;
-import steps.RequestsSteps;
 import steps.Steps;
+import utils.DataGenerator;
 
-public class RequestsTest extends BaseTest implements Steps {
+public class RequestsTest extends BaseTest {
+
+    private RequestModel request;
+    @BeforeMethod
+    public void generateData() {
+        request = DataGenerator.generateRequest();
+    }
+
     @Test(testName = "Добавление заявки", description = "Добавление заявки")
     @Description("Тестирование возмонжости добавления заявки для оказания услуги")
-    public void addRequestTest(){
+    public void addRequestTest() {
         login();
         REQUESTS_STEPS.fillingFormRequest(
                 "Предоставление спецтехники и оборудования для погрузочно-разгрузочных работ",
@@ -32,7 +40,7 @@ public class RequestsTest extends BaseTest implements Steps {
 
     @Test(testName = "Отмена заявки", description = "Отмена заявки")
     @Description("Тестирование возможности отмены ранее созданой заявки")
-    public void cancelRequestTest(){
+    public void cancelRequestTest() {
         login();
         REQUESTS_STEPS.fillingFormRequest(
                 "Предоставление спецтехники и оборудования для погрузочно-разгрузочных работ",
@@ -59,7 +67,7 @@ public class RequestsTest extends BaseTest implements Steps {
 
     @Test(testName = "Отказ от заявки", description = "Отказ от заявки")
     @Description("Тестирование возможности отказаться от заявки")
-    public void refusalRequestTest(){
+    public void refusalRequestTest() {
         login();
         REQUESTS_STEPS.fillingFormRequest(
                 "Предоставление спецтехники и оборудования для погрузочно-разгрузочных работ",
@@ -84,10 +92,27 @@ public class RequestsTest extends BaseTest implements Steps {
         logout();
     }
 
-    /*@Test(testName = "Редактировать заявку", description =  "Редактировать заявку")
+    @Test(testName = "Редактировать заявку", description =  "Редактировать заявку")
     @Description("Тестирование возможности редактирования ранее созданой заявки")
     public void editRequestTest(){
-        REQUESTS_STEPS.editRequest
-    }*/
+        login();
+        REQUESTS_STEPS.fillingFormRequest(
+                "Предоставление спецтехники и оборудования для погрузочно-разгрузочных работ",
+                "АЗУР эйр",
+                "Офис UTG",
+                "RA-73080",
+                "testreys",
+                "10.04.2024", "10:00",
+                "11.04.2024", "20:00",
+                "ВНК - Перрон1",
+                "10 (ТЭ)",
+                "Предоставление багажной тележки",
+                10,
+                "Тестовый комент(-_-)",
+                "Тестовая доп.инфа"
+        );
+        REQUESTS_STEPS.editRequest();
+        logout();
+    }
 
 }

@@ -1,10 +1,9 @@
 package elements.pickers;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
-import elements.BaseElement;
-import elements.Button;
-import elements.TextField;
+import elements.base.BaseElement;
+import elements.base.Button;
+import elements.base.TextField;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;

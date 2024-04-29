@@ -93,4 +93,9 @@ public class RequestsSteps implements BaseScreen {
     @Step("Проверить что произошел отказ от заявки")
     public void checkRequestIsRefusal(){
     }
+
+    @Step("Редактировать заявку")
+    public void editRequest() {
+
+    }
 }

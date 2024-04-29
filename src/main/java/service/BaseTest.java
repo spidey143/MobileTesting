@@ -11,11 +11,12 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import screens.base.BaseScreen;
+import steps.Steps;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 
-public class BaseTest extends Driver implements BaseScreen {
+public class BaseTest extends Driver implements BaseScreen, Steps {
 
     private final AppiumDriverLocalService APPIUM_SERVICE = new AppiumServiceBuilder()
             .usingPort(4723).withArgument(() -> "--allow-insecure","chromedriver_autodownload").build();

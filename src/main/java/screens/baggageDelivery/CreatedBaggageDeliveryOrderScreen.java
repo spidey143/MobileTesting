@@ -1,9 +1,7 @@
 package screens.baggageDelivery;
 
-import com.codeborne.selenide.SelenideElement;
-import elements.Button;
+import elements.base.Button;
 import io.appium.java_client.AppiumBy;
-import lombok.Getter;
 
 import static com.codeborne.selenide.Selenide.$;
 

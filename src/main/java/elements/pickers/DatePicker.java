@@ -1,13 +1,12 @@
 package elements.pickers;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.appium.AppiumScrollOptions;
 import com.codeborne.selenide.appium.ScrollDirection;
 import com.codeborne.selenide.appium.SelenideAppium;
-import elements.BaseElement;
-import elements.Button;
+import elements.base.BaseElement;
+import elements.base.Button;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 

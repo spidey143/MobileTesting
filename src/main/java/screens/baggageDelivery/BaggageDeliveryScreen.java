@@ -1,6 +1,6 @@
 package screens.baggageDelivery;
 
-import elements.Button;
+import elements.base.Button;
 import io.appium.java_client.AppiumBy;
 
 public class BaggageDeliveryScreen {

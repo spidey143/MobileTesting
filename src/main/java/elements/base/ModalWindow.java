@@ -1,9 +1,10 @@
-package elements;
+package elements.base;
 
+import elements.base.BaseElement;
+import elements.base.Button;
 import io.appium.java_client.AppiumBy;
-import org.openqa.selenium.By;
 
-public class ModalWindow extends BaseElement{
+public class ModalWindow extends BaseElement {
     public Button confirm;
     public ModalWindow(String name) {
         super(AppiumBy.xpath("//android.widget.TextView[contains(@text, 'Вы уверены')]/.."),

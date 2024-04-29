@@ -1,6 +1,6 @@
 package elements.menu;
 
-import elements.Button;
+import elements.base.Button;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 

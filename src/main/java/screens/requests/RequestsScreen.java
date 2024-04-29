@@ -3,9 +3,8 @@ package screens.requests;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.appium.SelenideAppium;
-import elements.Button;
+import elements.base.Button;
 import io.appium.java_client.AppiumBy;
-import io.qameta.allure.Step;
 import screens.base.BaseScreen;
 
 import java.time.Duration;

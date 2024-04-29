@@ -1,7 +1,6 @@
 package screens;
-import elements.Button;
-import elements.TextField;
-import io.appium.java_client.AppiumBy;
+import elements.base.Button;
+import elements.base.TextField;
 import org.openqa.selenium.By;
 
 public class AuthScreen {

@@ -1,7 +1,7 @@
 package screens;
 
-import elements.Button;
-import elements.TextField;
+import elements.base.Button;
+import elements.base.TextField;
 import io.appium.java_client.AppiumBy;
 
 public class CommentsScreen {

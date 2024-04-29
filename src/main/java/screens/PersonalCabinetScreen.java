@@ -1,9 +1,7 @@
 package screens;
 
-import com.beust.ah.A;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import elements.Button;
+import elements.base.Button;
 import io.appium.java_client.AppiumBy;
 import lombok.Getter;
 
