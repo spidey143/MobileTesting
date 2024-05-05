@@ -34,9 +34,6 @@ public class CreateRequestScreen {
     public Button addDocumentButton = new Button(AppiumBy.xpath(
             "//android.widget.TextView[@text=\"Документы\"]/..//android.widget.Button"),
             "Добавление документа");
-    public Button cancelButton = new Button(
-            AppiumBy.xpath("//android.widget.TextView[@text=\"Отменить\"]/.."),
-            "Отменить");
     public Button createRequestButton = new Button(
             AppiumBy.xpath("//android.widget.TextView[@text=\"Создать заявку\"]/.."),
             "Создать заявку");

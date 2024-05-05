@@ -6,9 +6,6 @@ import io.qameta.allure.Step;
 import screens.AuthScreen;
 import screens.MainScreen;
 import screens.PersonalCabinetScreen;
-import screens.baggageDelivery.BaggageDeliveryScreen;
-import screens.baggageDelivery.CreateOrderBaggageDeliveryScreen;
-import screens.baggageDelivery.CreatedBaggageDeliveryOrderScreen;
 import screens.requests.CreateRequestScreen;
 import screens.requests.CreatedRequestScreen;
 import screens.requests.RequestsScreen;
@@ -22,8 +19,5 @@ public interface BaseScreen {
     CreateRequestScreen createRequestScreen = new CreateRequestScreen();
     PersonalCabinetScreen personalCabinetScreen = new PersonalCabinetScreen();
     CreatedRequestScreen createdRequestScreen = new CreatedRequestScreen();
-    BaggageDeliveryScreen baggageDeliveryScreen = new BaggageDeliveryScreen();
-    CreateOrderBaggageDeliveryScreen createOrderBaggageDeliveryScreen = new CreateOrderBaggageDeliveryScreen();
-    CreatedBaggageDeliveryOrderScreen createdOrderBaggageDeliveryScreen = new CreatedBaggageDeliveryOrderScreen();
     Menu menu = new Menu();
 }
