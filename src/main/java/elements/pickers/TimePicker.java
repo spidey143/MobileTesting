@@ -12,7 +12,6 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.appium.AppiumClickOptions.tap;
 
 public class TimePicker extends BaseElement {
-    private String nameForOpen;
     public Button toggleModeToKeyboardButton;
     public TextField minutesInputField;
     public TextField hourInputField;
@@ -21,7 +20,6 @@ public class TimePicker extends BaseElement {
 
     public TimePicker(String name) {
         super(AppiumBy.id("android:id/timePicker"), "тайм пикер поля" + name);
-        this.nameForOpen = name;
         toggleModeToKeyboardButton = new Button(
                 AppiumBy.xpath("//android.widget.ImageButton"),
                 "Переход в режим ввода текста"
@@ -41,18 +39,11 @@ public class TimePicker extends BaseElement {
     @Step("Установить время {time}")
     public void setTime(String time){
         String[] rTime = time.split(":");
-        String hour = rTime[0];
+        String hours = rTime[0];
         String minutes = rTime[1];
         toggleModeToKeyboardButton.buttonTap();
-        hourInputField.setValue(hour);
+        hourInputField.setValue(hours);
         minutesInputField.setValue(minutes);
         okButton.buttonClick();
-    }
-
-    @Step("Открыть тайм пикер поля")
-    public TimePicker open(){
-        $(AppiumBy.xpath("")).shouldBe(Condition.visible)
-                .click(tap());
-        return this;
     }
 }

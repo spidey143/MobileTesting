@@ -14,9 +14,6 @@ public interface TestConfig extends Config {
     @Config.Key("url")
     String getUrl();
 
-    @Config.Key("app")
-    String getApp();
-
     @Config.Key("package")
     String getPackage();
 
@@ -25,9 +22,6 @@ public interface TestConfig extends Config {
 
     @Config.Key("automationName")
     String getAutomationName();
-
-    @Config.Key("noReset")
-    Boolean getNoReset();
 
     @Config.Key("username")
     String getUsername();

@@ -20,7 +20,6 @@ public class DatePicker extends BaseElement {
     public Button nextMonthButton;
     private String nameForOpen;
     private SelenideElement currentYear;
-    private SelenideElement currentMonth;
 
     public DatePicker(String name) {
         super(AppiumBy.id("android:id/datePicker"), "дейт пикер поля" + name);
@@ -38,10 +37,9 @@ public class DatePicker extends BaseElement {
 
     @Step("Установить дату {date}")
     public void setDate(String date) {
-        String[] rDate = date.split("\\.");
-        String day = rDate[0];
-        String month = rDate[1];
-        String year = rDate[2];
+        String[] rDate = date.split("-");
+        String year = rDate[0];
+        String day = rDate[2].replace("0", "");
         if (!this.currentYear.getText().equals(year)) {
             this.currentYear.click(tap());
             if (Integer.parseInt(this.currentYear.getText()) < Integer.parseInt(year)) {

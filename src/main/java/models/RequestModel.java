@@ -3,15 +3,18 @@ package models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class RequestModel {
     private String service;
     private String customer;
     private String office;
+    private String typeVs;
     private String numberVs;
     private String flightNumber;
     private String startDate;

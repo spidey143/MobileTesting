@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public enum MenuSections {
-    BAGGAGE_DELIVERY("Доставка багажа"),
+    REQUESTS_RA("Заявки РА"),
     REQUESTS("Заявки"),
     FLIGHTS("Рейсы"),
     REFUELING("Заправка");

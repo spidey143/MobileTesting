@@ -1,23 +1,24 @@
 package screens.base;
 
-import com.codeborne.selenide.SelenideElement;
 import elements.menu.Menu;
-import io.qameta.allure.Step;
 import screens.AuthScreen;
-import screens.MainScreen;
+import screens.CommentsScreen;
 import screens.PersonalCabinetScreen;
-import screens.requests.CreateRequestScreen;
-import screens.requests.CreatedRequestScreen;
-import screens.requests.RequestsScreen;
+import screens.CreateRequestScreen;
+import screens.CreatedRequestScreen;
+import screens.EditRequestScreen;
+import screens.RequestsScreen;
 
 import static com.codeborne.selenide.appium.SelenideAppium.$;
 
 public interface BaseScreen {
-    AuthScreen authScreen = new AuthScreen();
-    MainScreen mainScreen = new MainScreen();
-    RequestsScreen requestsScreen= new RequestsScreen();
-    CreateRequestScreen createRequestScreen = new CreateRequestScreen();
-    PersonalCabinetScreen personalCabinetScreen = new PersonalCabinetScreen();
-    CreatedRequestScreen createdRequestScreen = new CreatedRequestScreen();
-    Menu menu = new Menu();
+    AuthScreen AUTH_SCREEN = new AuthScreen();
+    MainScreen MAIN_SCREEN = new MainScreen();
+    RequestsScreen REQUESTS_SCREEN = new RequestsScreen();
+    CreateRequestScreen CREATE_REQUEST_SCREEN = new CreateRequestScreen();
+    PersonalCabinetScreen PERSONAL_CABINET_SCREEN = new PersonalCabinetScreen();
+    CreatedRequestScreen CREATED_REQUEST_SCREEN = new CreatedRequestScreen();
+    EditRequestScreen EDIT_REQUEST_SCREEN = new EditRequestScreen();
+    CommentsScreen COMMENTS_SCREEN = new CommentsScreen();
+    Menu MENU = new Menu();
 }
