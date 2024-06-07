@@ -18,9 +18,10 @@ public class AuthSteps implements BaseScreen {
             AUTH_SCREEN.usernameField.setValue(username);
             AUTH_SCREEN.passwordField.setValue(password);
             AUTH_SCREEN.loginButton.buttonClick();
-            Assert.assertFalse(AUTH_SCREEN.checkErrorMessage(), "Ошибка авторизации!");
             SelenideAppium.switchTo().context("NATIVE_APP");
+            Assert.assertTrue($(AppiumBy.xpath("//android.widget.TextView[@text=\"Заявки PA\"]")).isDisplayed(), "Ошибка авторизации!");
         }
+        REQUESTS_SCREEN.dismissUpdateNotification();
     }
 
     @Step("Выход из системы")
@@ -33,14 +34,5 @@ public class AuthSteps implements BaseScreen {
         MENU.openPersonalCabinet();
         PERSONAL_CABINET_SCREEN.exitButton.buttonTap();
         Assert.assertTrue(MAIN_SCREEN.loginButton.isVisibility(), "Выход из акканунта не произошел!");
-    }
-
-
-    @Step("Проверить что пользователь успешно авторизован")
-    public void checkAuthIsSuccess() {
-        Assert.assertTrue($(AppiumBy.xpath("//android.widget.TextView[@text=\"Заявки PA\"]"))
-                        .shouldBe(Condition.visible)
-                        .isDisplayed(),
-                "Пользователь не авторизован!");
     }
 }

@@ -15,10 +15,4 @@ public class AuthScreen {
     public TextField usernameField = new TextField(By.xpath("//input[@name=\"username\"]"), "Логин");
     public TextField passwordField = new TextField(By.xpath("//input[@name=\"password\"]"), "Пароль");
     public Button loginButton = new Button(By.xpath("//input[@name=\"login\"]"), "Вход");
-    private final SelenideElement ERROR_MESSAGE = $(AppiumBy.xpath("//span[@id=\"input-error\"]")).as("Ошибка о неверном логине/пароле");
-
-    @Step("Проверить что появляется уведомление о неверном логине/пароле")
-    public boolean checkErrorMessage(){
-        return ERROR_MESSAGE.shouldBe(Condition.visible).isDisplayed();
-    }
 }
